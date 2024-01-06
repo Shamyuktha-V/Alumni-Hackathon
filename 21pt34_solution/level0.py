@@ -47,9 +47,6 @@ min_dist_neigh_r0_str="n"+str(min_dist_neigh_r0)
 path_list=["r0"]
 path_list.append(min_dist_neigh_r0_str)
 
-#for claculating cost
-cost=0
-cost+=neighbours_distance[neighbour][min_dist_neigh_r0]
 
 while len(path_list)<=no_neighbours:
     neighbour=path_list[-1]
@@ -61,19 +58,16 @@ while len(path_list)<=no_neighbours:
         neighbours_distance[neighbour][min_dist_neigh]=float('inf')
         min_dist_neigh=neighbours_distance[neighbour].index(min(neighbours_distance[neighbour]))
         min_dist_neigh_str="n"+str(min_dist_neigh)
-    cost+=neighbours_distance[neighbour][min_dist_neigh]
     path_list.append(min_dist_neigh_str)
 path_list.append("r0")  
 
 path_dict=dict()
 
 path_dict["path"]=path_list
-vehicle_path["vo"]=path_dict
+vehicle_path["v0"]=path_dict
 print("Path is ")
 for path in vehicle_path:
     print(path,vehicle_path[path])
 
-print("Cost is ",cost)
-
-with open("21pt34_solution\\output_file","w") as outfile:
+with open("21pt34_solution\\level0_output.json","w") as outfile:
     json.dump(vehicle_path,outfile)
