@@ -1,7 +1,7 @@
 import json
 from collections import defaultdict
 
-file=open("Input data\\level2a.json","r")
+file=open("Input data\\level2b.json","r")
 dict_file=json.load(file)
 
 
@@ -99,6 +99,6 @@ while len(visited)<no_neighbours:
         if len(visited)>=no_neighbours:
             break
 
-with open("21pt34_solution\\level2a_output.json","w") as outfile:
+with open("21pt34_solution\\level2b_output.json","w") as outfile:
     json.dump(vehicle_path,outfile)
 
