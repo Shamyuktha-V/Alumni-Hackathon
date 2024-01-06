@@ -45,3 +45,35 @@ for vehicle in vehicles_dict:
 
 #for storing each vehicle path 
 vehicle_path=defaultdict(dict)
+
+vehicle_each_path=defaultdict(list)
+visited=[]
+capacity=0
+i=1
+while len(visited)<no_neighbours:
+    min_dist_neigh=restaurant_neighbour_distance["r0"].index(min(restaurant_neighbour_distance["r0"]))
+    min_dist_neigh_str="n"+str(min_dist_neigh)
+    restaurant_neighbour_distance["r0"][min_dist_neigh]=float('inf')
+    path_list=["r0"]
+    capacity+=neighbours_quantity[min_dist_neigh_str]
+    path_list.append(min_dist_neigh_str)
+    while capacity<=vehicles_capacity["v0"] and len(visited)<no_neighbours:
+        neighbour=path_list[-1]
+        neighbour_int=neighbour[1:]
+        neighbours_distance[neighbour][int(neighbour_int)]=float('inf')
+        min_dist_neigh=neighbours_distance[neighbour].index(min(neighbours_distance[neighbour]))
+        min_dist_neigh_str="n"+str(min_dist_neigh) 
+        print(min_dist_neigh_str)      
+        while min_dist_neigh_str in path_list and len(path_list)<no_neighbours+1 and capacity+neighbours_quantity[min_dist_neigh_str]>vehicles_capacity["v0"]:
+                neighbours_distance[neighbour][min_dist_neigh]=float('inf')
+                min_dist_neigh=neighbours_distance[neighbour].index(min(neighbours_distance[neighbour]))
+                min_dist_neigh_str="n"+str(min_dist_neigh)    
+        capacity+=neighbours_quantity[min_dist_neigh_str]
+        path_list.append(min_dist_neigh_str)
+    path_list.append("r0")
+    path_no="path"+str(i)
+    vehicle_each_path[path_no]=path_list
+    i+=1
+
+print(vehicle_each_path)
+

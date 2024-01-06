@@ -41,6 +41,8 @@ for vehicle in vehicles_dict.keys():
 #for storing each vehicle path 
 vehicle_path=defaultdict(dict)
 
+#bruteforce approach
+
 min_dist_neigh_r0=restaurant_neighbour_distance["r0"].index(min(restaurant_neighbour_distance["r0"]))
 min_dist_neigh_r0_str="n"+str(min_dist_neigh_r0)
 
