@@ -55,11 +55,11 @@ while len(visited)<no_neighbours:
     min_dist_neigh_str="n"+str(min_dist_neigh)
     restaurant_neighbour_distance["r0"][min_dist_neigh]=float('inf')
     path_list=["r0"]
-    capacity+=neighbours_quantity[min_dist_neigh_str]
     while min_dist_neigh_str in visited:
         min_dist_neigh=restaurant_neighbour_distance["r0"].index(min(restaurant_neighbour_distance["r0"]))
         min_dist_neigh_str="n"+str(min_dist_neigh)
         restaurant_neighbour_distance["r0"][min_dist_neigh]=float('inf')
+    capacity+=neighbours_quantity[min_dist_neigh_str]
     path_list.append(min_dist_neigh_str)
     visited.append(min_dist_neigh_str)
     while capacity<=vehicles_capacity["v0"] and len(visited)<no_neighbours:
