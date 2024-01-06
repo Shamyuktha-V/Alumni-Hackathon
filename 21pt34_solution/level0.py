@@ -75,5 +75,5 @@ for path in vehicle_path:
 
 print("Cost is ",cost)
 
-with open("output_file","w") as outfile:
+with open("21pt34_solution\\output_file","w") as outfile:
     json.dump(vehicle_path,outfile)
